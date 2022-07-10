@@ -1,24 +1,65 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import ImgCard from './components/ImgCard';
+import { fetchData } from './apiCalls';
+
+import imgPlaceHolder from './images/image-placeholder.gif';
+import { CssBaseline, Grid, Typography, Container } from '@mui/material';
+
 import './App.css';
 
 function App() {
+  const numberOfImgs = 12;
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    async function loadImages() {
+      setIsLoading(true);
+      const { data, error } = await fetchData(numberOfImgs);
+      setIsLoading(false);
+      setImages(data);
+      setIsError(error[0]);
+    }
+    loadImages();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <CssBaseline />
+      <Grid
+        container
+        justifyContent='center'
+        alignItems='center'
+        direction='column'
+        margin={4}
+      >
+        <Typography variant='h3' gutterBottom component='div'>
+          Portfolio Grid 4
+        </Typography>
+        <Typography variant='h6' gutterBottom component='div'>
+          This grid shows the items pages in a popup
+        </Typography>
+
+        {isLoading && (
+          <Typography variant='h4' gutterBottom component='div'>
+            Loading....
+          </Typography>
+        )}
+        {isError && (
+          <Typography variant='h4' gutterBottom component='div'>
+            Server Error. Please try to reload the page!.
+          </Typography>
+        )}
+      </Grid>
+      <Grid container spacing={0.5} marginBottom={3}>
+        {isLoading
+          ? Array(numberOfImgs)
+              .fill()
+              .map(() => <ImgCard src={imgPlaceHolder} />)
+          : images.map((image) => <ImgCard src={image.message} />)}
+      </Grid>
+    </Container>
   );
 }
 
