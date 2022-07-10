@@ -3,12 +3,19 @@ export const styles = (theme) => {
     main: {
       position: 'relative',
       cursor: 'pointer',
+      //layover class
       '&:hover .css-1o8sc7t': {
         opacity: 1,
       },
+      //text class
       '&:hover .css-1d4pmoe-MuiTypography-root': {
         transition: 'all 0.3s ease',
         transform: 'scale(1.8)',
+      },
+      //image class
+      '&:hover  .css-azgjdk-MuiCardMedia-root': {
+        transition: 'all 1s ease',
+        transform: 'scale(3)',
       },
     },
 
@@ -33,6 +40,9 @@ export const styles = (theme) => {
       left: '35%',
       transition: 'visibility 0.14s ease-in, opacity 0.14s ease-in',
       transform: '0.24s ease',
+    },
+    image: {
+      transform: 'scale(1)',
     },
   };
 };
