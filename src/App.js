@@ -54,7 +54,7 @@ function App() {
         )}
       </Grid>
       <Grid container spacing={0.5} marginBottom={3}>
-        {/* Show the image placeholder when it's loading */}
+        {/* Showing image placeholder when it's loading */}
         {isLoading
           ? Array(numberOfImgs)
               .fill()

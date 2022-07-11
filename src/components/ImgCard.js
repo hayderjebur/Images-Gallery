@@ -4,7 +4,7 @@ import { Grid, Card, CardMedia, Typography, Box } from '@mui/material';
 import { styles } from '../styles';
 
 const ImgCard = ({ src }) => {
-  //Styles a function return CSS classes
+  //Styles is a function return CSS classes
   const { main, text, overlay, image } = styles();
 
   return (
