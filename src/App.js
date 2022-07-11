@@ -35,10 +35,20 @@ function App() {
         direction='column'
         margin={4}
       >
-        <Typography variant='h3' gutterBottom component='div'>
+        <Typography
+          sx={{ fontWeight: 'bold' }}
+          variant='h3'
+          gutterBottom
+          component='div'
+        >
           Portfolio Grid 4
         </Typography>
-        <Typography variant='h6' gutterBottom component='div'>
+        <Typography
+          sx={{ opacity: '.7' }}
+          variant='h6'
+          gutterBottom
+          component='div'
+        >
           This grid shows the items pages in a popup
         </Typography>
 
