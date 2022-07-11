@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import { CssBaseline, Grid, Typography, Container } from '@mui/material';
+import imgPlaceHolder from './images/image-placeholder.gif';
 import ImgCard from './components/ImgCard';
 import { fetchData } from './apiCalls';
-
-import imgPlaceHolder from './images/image-placeholder.gif';
-import { CssBaseline, Grid, Typography, Container } from '@mui/material';
 
 import './App.css';
 
 function App() {
+  //Number of images will render in home page
   const numberOfImgs = 12;
+
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -53,6 +54,7 @@ function App() {
         )}
       </Grid>
       <Grid container spacing={0.5} marginBottom={3}>
+        {/* Show the image placeholder when it's loading */}
         {isLoading
           ? Array(numberOfImgs)
               .fill()
