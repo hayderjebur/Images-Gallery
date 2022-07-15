@@ -68,9 +68,12 @@ function App() {
         {isLoading
           ? Array(numberOfImgs)
               .fill()
-              .map(() => <ImgCard src={imgPlaceHolder} />)
-          : images.map((image) => <ImgCard src={image.message} />)}
+              .map((_, index) => <ImgCard src={imgPlaceHolder} key={index} />)
+          : images.map((image) => (
+              <ImgCard src={image.message} key={image.message} />
+            ))}
       </Grid>
+      <input aria-label='hello' />
     </Container>
   );
 }
