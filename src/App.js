@@ -73,7 +73,6 @@ function App() {
               <ImgCard src={image.message} key={image.message} />
             ))}
       </Grid>
-      <input aria-label='hello' />
     </Container>
   );
 }
